@@ -1,0 +1,65 @@
+/* flipping card animation based on https://www.w3schools.com/howto/howto_css_flip_card.asp */
+
+
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+
+body {
+  background-image: radial-gradient(#84C1F8, #008FA8); 
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.cards {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-wrapper {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  margin: 2em;
+  /* for 3d effect */
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+
+.card-wrapper:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-wrapper .card-inner .card-front {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  box-shadow: inset 0 0 0 0.5em #FFC837;
+  border-radius: 0.25em;
+}
+.card-wrapper .card-inner .card-front img{
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-wrapper .card-inner .card-back {
+  background-color: #FFC837;
+  border-radius: 0.25em;
+}
+
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
