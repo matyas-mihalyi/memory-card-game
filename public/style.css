@@ -32,11 +32,18 @@ body {
   text-align: center;
   transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
+  /*  */
+  /* transform: rotateY(180deg); */
+  cursor: pointer;
 }
 
 
 .card-wrapper:hover .card-inner {
-  transform: rotateY(180deg);
+  transform: scale(1.05); 
+}
+
+.flipped {
+  transform: scale(1.05) rotateY(180deg);
 }
 
 .card-wrapper .card-inner .card-front {
