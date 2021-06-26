@@ -9,14 +9,17 @@ export interface Pokemon {
 
 export interface CardsProps {
   mons: Pokemon[];
-  // cards: {"id": number, "pokemon": number, "flipped": boolean}[];
-  // cards: any;
   numberOfCards: number;
-  // flipCard: any;
-  // checkCard: any;
-  // onClick: any;
+  handleClick: (i: number) => void;
+  flippedCards: flipCardState[];
+  matchedCards: number[];
 }
 
 export interface CardState {
 
+}
+
+export interface flipCardState {
+  id: number; 
+  pokemonId: number
 }

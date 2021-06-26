@@ -38,10 +38,6 @@ body {
 }
 
 
-.card-wrapper:hover .card-inner {
-  transform: scale(1.05); 
-}
-
 .flipped {
   transform: scale(1.05) rotateY(180deg);
 }
