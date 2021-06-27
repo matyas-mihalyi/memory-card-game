@@ -1,6 +1,3 @@
-
-
-
 export interface Pokemon {
   pokemonName: string;
   pokemonId: number;
@@ -11,15 +8,11 @@ export interface CardsProps {
   mons: Pokemon[];
   numberOfCards: number;
   handleClick: (i: number) => void;
-  flippedCards: flipCardState[];
+  flippedCards: number[];
   matchedCards: number[];
 }
 
-export interface CardState {
-
-}
-
-export interface flipCardState {
-  id: number; 
-  pokemonId: number
+export interface ModalProps {
+  isVisible: boolean;
+  hideModal: () => void;
 }

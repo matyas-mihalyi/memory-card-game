@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react"
-import { Pokemon, CardsProps, flipCardState } from "./interfaces";
+import { CardsProps } from "../interfaces";
 
 
 export const Cards = ({mons, numberOfCards, handleClick, flippedCards, matchedCards}: CardsProps): JSX.Element => {
@@ -13,7 +11,7 @@ export const Cards = ({mons, numberOfCards, handleClick, flippedCards, matchedCa
         (
         <div className="card-wrapper" key={i} onClick={()=>handleClick(i)}>  
           <div className={
-            flippedCards.some((card: flipCardState)=> card.id === i) || matchedCards.some((card: number)=> card === i) 
+            flippedCards.some((card: number)=> card === i) || matchedCards.some((card: number)=> card === i) 
             ? "card-inner flipped"
             : "card-inner"
             }>
