@@ -86,8 +86,8 @@
 /****************************************/
 
 nav {
-  position: sticky;
-  position:-webkit-sticky;
+  position: fixed;
+  position:-webkit-fixed;
   bottom: 0;
   left: 0;
   
