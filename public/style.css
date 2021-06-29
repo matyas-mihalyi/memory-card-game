@@ -126,19 +126,22 @@ nav {
   background-color: #FFC837;
   padding: 2em 1em;
   border-radius: 0.125em;
-}
-
-.settings-container form {
   display: flex;
   flex-direction: column;
-  margin-top: 1em;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.settings-container form input{
-  width: 50%;
-  font-size: 1.5rem;
+.settings-container h3 {width: 100%}
+.settings-container .number-of-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.settings-container form label{
-  width: 85%;
+.settings-container .number-of-cards span {
+  font-size: 1.25rem;
+  font-weight: 700;
+} 
+.settings-container .number-of-cards .number-of-mons{
+  margin: 0 1em;
 }
