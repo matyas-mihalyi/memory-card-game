@@ -1,8 +1,6 @@
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect } from "react";
 import { Cards, } from "./cards";
-import { pokemonIds, shuffle } from "../hooks/get-random-mons";
-import { Pokemon, TableProps } from "../interfaces";
-import { useNumberOfCards } from '../hooks/number-of-cards'
+import { TableProps } from "../interfaces";
 
 import React from "react";
 

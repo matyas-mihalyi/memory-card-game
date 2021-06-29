@@ -4,7 +4,6 @@ import { Navbar } from './components/navbar'
 import { useNumberOfCards } from './hooks/number-of-cards'
 import { useModal } from './hooks/modal-hook';
 import { useFetchMons } from './hooks/get-random-mons';
-import { pokemonIds } from './hooks/get-random-mons';
 
 function App() {
 

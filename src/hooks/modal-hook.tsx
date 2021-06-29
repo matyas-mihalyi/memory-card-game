@@ -1,6 +1,5 @@
 //from https://medium.com/swlh/building-modals-in-react-64d92591f4b
 
-import { useEffect } from "react";
 import { useState } from "react";
 
 export const useModal = () => {

@@ -6,11 +6,15 @@ export const useNumberOfCards = () => {
   //increment & decrement number of cards
 
   const incrementCards = () => {
-    setNumberOfCards((state)=>(state+2));
+    if (numberOfCards < 28) {
+      setNumberOfCards((state)=>(state+2));
+    }
   }
   
   const decrementCards = () => {
-    setNumberOfCards((state)=>(state-2));
+    if (numberOfCards > 4) {
+      setNumberOfCards((state)=>(state-2));
+    }
   }
   
   return { numberOfCards, incrementCards, decrementCards, }

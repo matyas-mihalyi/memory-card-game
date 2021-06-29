@@ -1,9 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { useModal } from '../hooks/modal-hook'
-import { useNumberOfCards } from '../hooks/number-of-cards'
 import { ModalProps } from '../interfaces'
-import { useState } from 'react'
 
   
 export  const Modal = ({ isVisible, toggleModal, decrementCards, incrementCards, numberOfCards}: ModalProps ) => {

@@ -1,6 +1,5 @@
 import { Pokemon } from "../interfaces";
 import { useState, useEffect } from "react";
-import { CardsProps } from "../interfaces";
 
 //source for shuffling algorhythm: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
 export const shuffle = (array: Pokemon[]|number[]) => {

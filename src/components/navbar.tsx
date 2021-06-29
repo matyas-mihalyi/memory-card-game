@@ -1,7 +1,6 @@
 import React from "react"
 import { ModalProps } from "../interfaces"
 import { Modal } from "./modal"
-import { useModal } from "../hooks/modal-hook"
 
 export const Navbar = ({isVisible, toggleModal, numberOfCards, incrementCards, decrementCards}: ModalProps): JSX.Element => {
   
