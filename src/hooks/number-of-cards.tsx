@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const useNumberOfCards = () => {
-  const [numberOfCards, setNumberOfCards] = useState<number>(8)
+  const [numberOfCards, setNumberOfCards] = useState<number>(12)
 
   //increment & decrement number of cards
 
