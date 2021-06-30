@@ -7,13 +7,17 @@
 }
 
 *{padding: 0; margin: 0; box-sizing: border-box;}
-#root{width: 100vw;}
+/* #root{width: 100vw;} */
 
-.container {
-  font-family: var(--default-font);
+body {
+  height: 100%;
   background-image: radial-gradient(#84C1F8, #008FA8); 
+}
+
+#root {
+  font-family: var(--default-font);
   background-repeat: no-repeat;
-  height: 100vh;
+  /* height: 100vh; */
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   padding: 0 20px;

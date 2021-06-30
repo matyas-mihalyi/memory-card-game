@@ -12,7 +12,7 @@ function App() {
   const { pokemons } = useFetchMons(numberOfCards);
 
   return (
-    <div className="container">
+    <React.Fragment>
     <Table 
       //number of cards
       numberOfCards={numberOfCards}
@@ -27,7 +27,7 @@ function App() {
       incrementCards={incrementCards}
       decrementCards={decrementCards}
       />
-    </div>
+    </React.Fragment>
   );
 }
 
