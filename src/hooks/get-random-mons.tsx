@@ -31,9 +31,12 @@ export const pokemonIds = (num: number): number[] => {
 export const useFetchMons = (num: number) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]); 
 
-  const pokemonsToFetch = pokemonIds(num);
+  let pokemonsToFetch = pokemonIds(num);
 
-  
+  const refreshPokemons = (newNum: number) => {
+    pokemonsToFetch = pokemonIds(newNum);
+  }
+
   useEffect(()=> {
     let allCards: Pokemon[] = [];
     pokemonsToFetch.forEach((id, i) => {
@@ -65,5 +68,5 @@ export const useFetchMons = (num: number) => {
     });
     
   }, [num]);
-  return  { pokemons } 
+  return  { pokemons, refreshPokemons } 
 }

@@ -9,7 +9,7 @@ function App() {
 
   const { isVisible, toggleModal} = useModal();
   const { numberOfCards, incrementCards, decrementCards } = useNumberOfCards();
-  const { pokemons } = useFetchMons(numberOfCards);
+  const { pokemons, refreshPokemons } = useFetchMons(numberOfCards);
 
   return (
     <React.Fragment>
@@ -26,6 +26,8 @@ function App() {
       numberOfCards={numberOfCards}
       incrementCards={incrementCards}
       decrementCards={decrementCards}
+      //refresh cards
+      refreshPokemons={refreshPokemons}
       />
     </React.Fragment>
   );
