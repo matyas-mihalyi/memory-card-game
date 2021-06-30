@@ -11,6 +11,7 @@
 body {
   height: 100%;
   background-image: radial-gradient(#84C1F8, #008FA8); 
+  background-size: cover;
 }
 
 #root {
@@ -111,6 +112,10 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+nav .reset span {
+  transition: 0.25s ease-in-out;
 }
 
 

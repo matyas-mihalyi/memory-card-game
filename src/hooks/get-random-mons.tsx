@@ -31,13 +31,9 @@ export const pokemonIds = (num: number): number[] => {
 export const useFetchMons = (num: number) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]); 
 
-  let pokemonsToFetch = pokemonIds(num);
+  const pokemonsToFetch = pokemonIds(num);
 
-  const refreshPokemons = (newNum: number) => {
-    pokemonsToFetch = pokemonIds(newNum);
-  }
-
-  useEffect(()=> {
+  const refreshPokemons = () => {
     let allCards: Pokemon[] = [];
     pokemonsToFetch.forEach((id, i) => {
       fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -53,9 +49,7 @@ export const useFetchMons = (num: number) => {
           pokemonId: data.id,
           sprite: `${data.sprites.front_default}`
         }
-
         allCards.push(pokemon, pokemonCopy); 
-
         return allCards;
       })
       .then((allmons)=> {
@@ -66,7 +60,11 @@ export const useFetchMons = (num: number) => {
       })
       .catch((error)=> console.log(error));
     });
-    
+  }
+
+
+  useEffect(()=> {
+    refreshPokemons()
   }, [num]);
   return  { pokemons, refreshPokemons } 
 }

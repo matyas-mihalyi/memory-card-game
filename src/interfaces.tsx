@@ -11,6 +11,7 @@ export interface NavbarProps {
   incrementCards:() => void;
   numberOfCards: number;
   refreshPokemons:(num: number) => void;
+  clearCards:()=> void;
 }
 
 export interface ModalProps {
@@ -24,6 +25,9 @@ export interface ModalProps {
 export interface TableProps {
   numberOfCards: any;
   cardsToRender: Pokemon[];
+  handleClick: (i: number) => void;
+  flippedCards: number[];
+  matchedCards: number[];
 }
 
 export interface CardsProps {
