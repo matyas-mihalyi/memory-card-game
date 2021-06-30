@@ -11,6 +11,7 @@
 body {
   height: 100%;
   background-image: radial-gradient(#84C1F8, #008FA8); 
+  background-size: cover;
 }
 
 #root {
@@ -52,8 +53,18 @@ body {
 
 
 .flipped {
-  transform: scale(1.05) rotateY(180deg);
+  transform: rotateY(180deg);
+  /* animation: flip 0.3s ease-out forwards; */
 }
+
+/* @keyframes flip {
+  70% {
+    transform: scale(1.1, 1.1) rotateY(180deg);
+  }
+  100% {
+    transform: scale(1,1) rotateY(180deg);
+  }
+} */
 
 .card-wrapper .card-inner .card-front {
   transform: rotateY(180deg);
@@ -101,6 +112,10 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+nav .reset span {
+  transition: 0.25s ease-in-out;
 }
 
 
