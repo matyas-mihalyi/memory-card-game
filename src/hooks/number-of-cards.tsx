@@ -7,13 +7,13 @@ export const useNumberOfCards = () => {
 
   const incrementCards = () => {
     if (numberOfCards < 28) {
-      setNumberOfCards((state)=>(state+2));
+      setNumberOfCards((state)=>(state+4));
     }
   }
   
   const decrementCards = () => {
     if (numberOfCards > 4) {
-      setNumberOfCards((state)=>(state-2));
+      setNumberOfCards((state)=>(state-4));
     }
   }
   
