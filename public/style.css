@@ -119,6 +119,21 @@ nav {
   
 }
 
+nav .score {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+}
+nav .score .label {
+  font-size: 0.75rem;
+  margin-right: 0.25em;
+}
+nav .score .moves {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 nav .reset span {
   transition: 0.25s ease-in-out;
 }

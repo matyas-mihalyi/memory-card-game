@@ -5,21 +5,27 @@ export interface Pokemon {
 }
 
 export interface NavbarProps {
-  isVisible: boolean;
   toggleModal: () => void;
-  decrementCards: () => void;
-  incrementCards:() => void;
-  numberOfCards: number;
-  refreshPokemons:(num: number) => void;
+  refreshPokemons:() => void;
   clearCards:()=> void;
+  userMoves: number;
 }
 
-export interface ModalProps {
+export interface SettingsModalProps {
   isVisible: boolean;
   toggleModal: () => void;
   decrementCards: () => void;
   incrementCards:() => void;
   numberOfCards: number;
+}
+
+export interface ScoreModalProps {
+  toggle: () => void;
+  isVisible: boolean;
+  score: number;
+  clearCards: ()=> void;
+  resetMoves: ()=> void;
+  refreshPokemons: ()=> void;
 }
 
 export interface TableProps {
@@ -36,4 +42,10 @@ export interface CardsProps {
   handleClick: (i: number) => void;
   flippedCards: number[];
   matchedCards: number[];
+}
+
+export interface CardStateProps {
+  pokemons: Pokemon[];
+  addToMoves:()=> void;
+  resetMoves:()=> void;
 }

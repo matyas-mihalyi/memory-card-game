@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { ModalProps } from '../interfaces'
+import { SettingsModalProps } from '../interfaces'
 
   
-export  const Modal = ({ isVisible, toggleModal, decrementCards, incrementCards, numberOfCards}: ModalProps ) => {
+export  const SettingsModal = ({ isVisible, toggleModal, decrementCards, incrementCards, numberOfCards}: SettingsModalProps ) => {
 
   return isVisible
   ? ReactDOM.createPortal(

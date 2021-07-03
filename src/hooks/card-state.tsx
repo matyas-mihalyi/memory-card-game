@@ -1,10 +1,11 @@
 
 import { useState, useEffect } from "react";
-import { Pokemon } from "../interfaces";
+import { CardStateProps } from "../interfaces";
 
-export const useCardStates = (cardsToRender: Pokemon[]) => {
+export const useCardStates = ({pokemons, addToMoves, resetMoves}: CardStateProps) => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
+  const [scoreVisible, setScoreVisible] = useState<boolean>(false);
 
   //evaluate recently flipped cards 
   useEffect(()=>{
@@ -12,6 +13,13 @@ export const useCardStates = (cardsToRender: Pokemon[]) => {
     if (flippedCards.length === 2) {evaluate(flippedCards);};
   }, [flippedCards])
 
+  useEffect(()=> {
+    if(matchedCards.length > 1 && matchedCards.length === pokemons.length) {
+      setTimeout(()=>{toggleScoreModal();}, 1500)   
+    }
+  }, [matchedCards]);
+
+  
   //timeout to flip back cards if not matched
   let flipBack:any; 
   const cardFlip = () => {flipBack = setTimeout(()=>{setFlippedCards(()=>([]))},1800);};
@@ -20,7 +28,7 @@ export const useCardStates = (cardsToRender: Pokemon[]) => {
   const evaluate = (flippedCards: number[]):void => {
     const [a, b] = flippedCards;
     //if it's a match
-    if (cardsToRender[a].pokemonId === cardsToRender[b].pokemonId) {
+    if (pokemons[a].pokemonId === pokemons[b].pokemonId) {
       setMatchedCards((state)=>([...state, a, b]));
     } else {
       cardFlip();
@@ -33,24 +41,33 @@ export const useCardStates = (cardsToRender: Pokemon[]) => {
     if (flippedCards.some((id)=> id === i) || matchedCards.some((id)=> id === i)) {
       return;
     }
-    //add to flippedCards
+    //add to flippedCards & add to moves
     else if (flippedCards.length === 1) {
       setFlippedCards((state)=>([...state, i]));
+      addToMoves();
     } else {
       setFlippedCards(()=>([i]));
-      noFlip()
+      addToMoves();
+      noFlip();
     }
   }
 
   const clearCards = () => {
     const icon = document.querySelector(".reset")!.querySelector("span")!;
     icon.style.transform = "rotate(-360deg)";
-    icon.ontransitionend = (()=>icon.style.transform= "rotate(0deg)")
-    setFlippedCards(()=>[])
-    setMatchedCards(()=>[])
+    icon.ontransitionend = (()=>icon.style.transform= "rotate(0deg)");
+    setFlippedCards(()=>[]);
+    setMatchedCards(()=>[]);
+    //reset moves
+    resetMoves();
   }
 
-  return {flippedCards, matchedCards, handleClick, clearCards}
+  //toggle score modal
+  const toggleScoreModal = () => {
+    setScoreVisible(!scoreVisible);
+  }
+
+  return {flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible}
 
 }
 

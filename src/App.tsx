@@ -2,16 +2,20 @@ import React from 'react';
 import { Table } from './components/table';
 import { Navbar } from './components/navbar'
 import { useNumberOfCards } from './hooks/number-of-cards'
-import { useModal } from './hooks/modal-hook';
+import { useModal } from './hooks/settings-hook';
 import { useFetchMons } from './hooks/get-random-mons';
 import { useCardStates } from './hooks/card-state';
+import { useScore } from './hooks/score-hook';
+import { SettingsModal } from './components/settings-modal';
+import {ScoreModal} from './components/score-modal';
 
 function App() {
 
   const { isVisible, toggleModal} = useModal();
   const { numberOfCards, incrementCards, decrementCards } = useNumberOfCards();
   const { pokemons, refreshPokemons } = useFetchMons(numberOfCards);
-  const { flippedCards, matchedCards, handleClick, clearCards } = useCardStates(pokemons)
+  const { userMoves, addToMoves, resetMoves } = useScore();
+  const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves});
 
   return (
     <React.Fragment>
@@ -24,16 +28,25 @@ function App() {
       matchedCards={matchedCards}
     />
     <Navbar 
-      //modal
-      isVisible={isVisible} 
       toggleModal={toggleModal}
-      //number of cards
+      userMoves={userMoves}
+      refreshPokemons={refreshPokemons}
+      clearCards={clearCards}
+    />
+    <SettingsModal 
       numberOfCards={numberOfCards}
       incrementCards={incrementCards}
       decrementCards={decrementCards}
-      //refresh cards
-      refreshPokemons={refreshPokemons}
+      isVisible={isVisible} 
+      toggleModal={toggleModal}
+    />
+    <ScoreModal 
+      toggle={toggleScoreModal}
+      isVisible={scoreVisible}
+      score={userMoves}
       clearCards={clearCards}
+      resetMoves={resetMoves}
+      refreshPokemons={refreshPokemons}
     />
     </React.Fragment>
   );
