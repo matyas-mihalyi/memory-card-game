@@ -1,13 +1,13 @@
 import { CardsProps } from "../interfaces";
 
 
-export const Cards = ({mons, numberOfCards, handleClick, flippedCards, matchedCards}: CardsProps): JSX.Element => {
+export const Cards = ({ handleClick, flippedCards, matchedCards, cardsToRender}: CardsProps): JSX.Element => {
 
 
   return (
     <div className="cards">
     { 
-      mons.map((pokemon, i) => 
+      cardsToRender.map((pokemon, i) => 
         (
         <div className="card-wrapper" key={i} onClick={()=>handleClick(i)}>  
           <div className={

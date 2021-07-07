@@ -1,23 +1,22 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { useModal, useNumberOfCards } from './modal-hook'
-import { ModalProps } from '../interfaces'
-import { useState } from 'react'
+import { SettingsModalProps } from '../interfaces'
 
   
-export  const Modal = ({ isVisible, hideModal}: ModalProps ) => {
-  const { numberOfCards, incrementCards, decrementCards } = useNumberOfCards();
-
+export  const SettingsModal = ({ isVisible, toggleModal, decrementCards, incrementCards, numberOfCards}: SettingsModalProps ) => {
 
   return isVisible
   ? ReactDOM.createPortal(
       <div className="modal-wrapper">
-        <div className="settings-container">
-          <h2>Number of Pokémons</h2>
+        <div className="container">
+            <h3>Number of Pokémons</h3>
+          <div className="number-of-cards">
             <span onClick={()=>decrementCards()} className="material-icons">remove</span>
             <span className="number-of-mons">{numberOfCards.toString()}</span>
             <span onClick={()=>incrementCards()} className="material-icons">add</span>
-            <button onClick={hideModal}>OK</button>
+          </div>
+
+            <button onClick={toggleModal}>OK</button>
         </div>
       </div>, document.querySelector("#modal")!
     )
