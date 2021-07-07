@@ -37,15 +37,22 @@ body {
 }
 
 .card-wrapper {
-  width: calc(20% - 8px);
+  width: calc(25% - 8px);
   height: 0;
-  padding-bottom: calc(20% - 8px);
+  padding-bottom: calc(25% - 8px);
   margin: 4px;  
   background-color: transparent;
+  user-select:none;
   /* for 3d effect */
   perspective: 1000px;
 }
 
+@media screen and (min-width: 400px){
+  .card-wrapper {
+    width: calc(20% - 8px);
+    padding-bottom: calc(20% - 8px);
+  }
+}
 
 .card-inner {
   position: absolute;
@@ -119,6 +126,27 @@ nav {
   
 }
 
+nav .reset, .menu {
+  cursor: pointer;
+  user-select:none;
+}
+
+nav .score {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  user-select:none;
+}
+nav .score .label {
+  font-size: 0.75rem;
+  margin-right: 0.25em;
+}
+nav .score .moves {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 nav .reset span {
   transition: 0.25s ease-in-out;
 }
@@ -145,7 +173,7 @@ nav .reset span {
   align-items: center;
 }
 
-.settings-container {
+.container {
   width: 100%;
   max-width: 400px;
   background-color: #FFC837;
@@ -158,21 +186,35 @@ nav .reset span {
   flex-wrap: wrap;
 }
 
-.settings-container h3 {width: 100%}
-.settings-container .number-of-cards {
+.container h3 {width: 100%; text-align: center;}
+.container .number-of-cards {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.settings-container .number-of-cards span {
+.container .number-of-cards span {
   font-size: 1.25rem;
   font-weight: 700;
 } 
-.settings-container .number-of-cards .number-of-mons{
+.container .number-of-cards .number-of-mons{
   margin: 0 1em;
 }
 
-.settings-container button {
+
+/* HIGHSCORE */
+
+
+.message-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-wrapper strong {
+  font-size: 1.5rem;
+}
+
+.container button {
   background: transparent;
   border: none;
   font-weight: 700;
