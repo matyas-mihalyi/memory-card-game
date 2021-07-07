@@ -2,23 +2,28 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { ScoreModalProps } from '../interfaces';
 
-export  const ScoreModal = ({toggle, isVisible, score, refreshPokemons, clearCards, resetMoves}: ScoreModalProps) => {
+export  const ScoreModal = ({toggle, isVisible, score, refreshPokemons, clearCards, resetMoves, getHighScore}: ScoreModalProps) => {
 
   return isVisible
   ? ReactDOM.createPortal(
       <div className="modal-wrapper">
-        <div className="settings-container">
+        <div className="container">
         <h3>Congratulations!</h3>
+        <div className="message-wrapper">
             <p>You got all the pairs in</p>
-            <h4>{score}</h4>
+            <strong>{score}</strong>
             <p>moves.</p>
             <br />
-            <button onClick={()=> {
-              toggle();
-              refreshPokemons();
-              clearCards();
-              resetMoves();
-            }}>OK</button>
+            <p>Your personal best is <b>{getHighScore()}</b> moves</p>
+        </div>
+            <button 
+              onClick={()=> {
+                toggle();
+                refreshPokemons();
+                clearCards();
+                resetMoves();
+              }
+            }>OK</button>
         </div>
       </div>, document.querySelector("#modal")!
     )

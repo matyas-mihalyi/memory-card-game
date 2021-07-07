@@ -26,6 +26,8 @@ export interface ScoreModalProps {
   clearCards: ()=> void;
   resetMoves: ()=> void;
   refreshPokemons: ()=> void;
+  getHighScore: ()=> number;
+
 }
 
 export interface TableProps {
@@ -46,6 +48,14 @@ export interface CardsProps {
 
 export interface CardStateProps {
   pokemons: Pokemon[];
-  addToMoves:()=> void;
-  resetMoves:()=> void;
+  addToMoves: ()=> void;
+  resetMoves: ()=> void;
+  numberOfCards: number;
+  userMoves: number;
+  storeScore: (num: number)=> void;
+}
+
+export interface HighScore {
+  numberOfCards: number;
+  userScore: number;
 }

@@ -8,7 +8,7 @@ export  const SettingsModal = ({ isVisible, toggleModal, decrementCards, increme
   return isVisible
   ? ReactDOM.createPortal(
       <div className="modal-wrapper">
-        <div className="settings-container">
+        <div className="container">
             <h3>Number of Pokémons</h3>
           <div className="number-of-cards">
             <span onClick={()=>decrementCards()} className="material-icons">remove</span>

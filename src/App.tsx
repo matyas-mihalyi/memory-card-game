@@ -14,8 +14,10 @@ function App() {
   const { isVisible, toggleModal} = useModal();
   const { numberOfCards, incrementCards, decrementCards } = useNumberOfCards();
   const { pokemons, refreshPokemons } = useFetchMons(numberOfCards);
-  const { userMoves, addToMoves, resetMoves } = useScore();
-  const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves});
+  const { userMoves, addToMoves, resetMoves, getHighScore } = useScore(numberOfCards);
+  const { storeScore } = useScore(numberOfCards);
+  const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves, userMoves, numberOfCards, storeScore});
+
 
   return (
     <React.Fragment>
@@ -47,6 +49,7 @@ function App() {
       clearCards={clearCards}
       resetMoves={resetMoves}
       refreshPokemons={refreshPokemons}
+      getHighScore={getHighScore}
     />
     </React.Fragment>
   );

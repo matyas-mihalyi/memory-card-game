@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { CardStateProps } from "../interfaces";
 
-export const useCardStates = ({pokemons, addToMoves, resetMoves}: CardStateProps) => {
+export const useCardStates = ({pokemons, addToMoves, resetMoves, userMoves, numberOfCards, storeScore}: CardStateProps) => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
   const [scoreVisible, setScoreVisible] = useState<boolean>(false);
@@ -15,7 +15,8 @@ export const useCardStates = ({pokemons, addToMoves, resetMoves}: CardStateProps
 
   useEffect(()=> {
     if(matchedCards.length > 1 && matchedCards.length === pokemons.length) {
-      setTimeout(()=>{toggleScoreModal();}, 1500)   
+      storeScore(userMoves);
+      setTimeout(()=>{toggleScoreModal();}, 1500);
     }
   }, [matchedCards]);
 
@@ -67,7 +68,9 @@ export const useCardStates = ({pokemons, addToMoves, resetMoves}: CardStateProps
     setScoreVisible(!scoreVisible);
   }
 
+ 
+
+
   return {flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible}
 
 }
-
