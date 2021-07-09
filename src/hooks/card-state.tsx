@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { CardStateProps } from "../interfaces";
 
-export const useCardStates = ({pokemons, addToMoves, resetMoves, userMoves, numberOfCards, storeScore}: CardStateProps) => {
+export const useCardStates = ({pokemons, addToMoves, resetMoves, userMoves, storeScore}: CardStateProps) => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
   const [scoreVisible, setScoreVisible] = useState<boolean>(false);
@@ -11,6 +11,7 @@ export const useCardStates = ({pokemons, addToMoves, resetMoves, userMoves, numb
   useEffect(()=>{
     //if cards match keep
     if (flippedCards.length === 2) {evaluate(flippedCards);};
+  /*eslint-disable-next-line*/
   }, [flippedCards])
 
   useEffect(()=> {
@@ -18,7 +19,8 @@ export const useCardStates = ({pokemons, addToMoves, resetMoves, userMoves, numb
       storeScore(userMoves);
       setTimeout(()=>{toggleScoreModal();}, 1500);
     }
-  }, [matchedCards]);
+  /*eslint-disable-next-line*/
+  }, [matchedCards, pokemons.length]);
 
   
   //timeout to flip back cards if not matched

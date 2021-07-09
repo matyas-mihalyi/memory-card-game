@@ -17,17 +17,17 @@ export interface SettingsModalProps {
   decrementCards: () => void;
   incrementCards:() => void;
   numberOfCards: number;
+  getGen: (str: string) => void;
+  generation: string;
+  clearAll: ()=> void;
 }
 
 export interface ScoreModalProps {
   toggle: () => void;
   isVisible: boolean;
   score: number;
-  clearCards: ()=> void;
-  resetMoves: ()=> void;
-  refreshPokemons: ()=> void;
   getHighScore: ()=> number;
-
+  clearAll: ()=> void;
 }
 
 export interface TableProps {
@@ -50,7 +50,6 @@ export interface CardStateProps {
   pokemons: Pokemon[];
   addToMoves: ()=> void;
   resetMoves: ()=> void;
-  numberOfCards: number;
   userMoves: number;
   storeScore: (num: number)=> void;
 }

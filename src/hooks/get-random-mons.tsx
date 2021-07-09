@@ -22,20 +22,20 @@ const KantoIds = (): number[] => {
 
 //get the first n number of IDs based on number of cards settings
 export const pokemonIds = (num: number): number[] => {
+  
   return KantoIds().slice(0, num/2);
 }
 
 
 //CUSTOM HOOK FOR FETCHING POKEMON DATA
 
-export const useFetchMons = (num: number) => {
+export const useFetchMons = (monsToRender: number[]) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]); 
 
-  const pokemonsToFetch = pokemonIds(num);
 
   const refreshPokemons = () => {
     let allCards: Pokemon[] = [];
-    pokemonsToFetch.forEach((id, i) => {
+    monsToRender.forEach((id, i) => {
       fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then(res => res.json())
       .then((data) => {
@@ -53,7 +53,7 @@ export const useFetchMons = (num: number) => {
         return allCards;
       })
       .then((allmons)=> {
-        if (allmons.length === pokemonsToFetch.length *2) {
+        if (allmons.length === monsToRender.length *2) {
           allmons.sort(()=> Math.random() - 0.5);
           setPokemons(() => (allmons));
         }
@@ -62,9 +62,8 @@ export const useFetchMons = (num: number) => {
     });
   }
 
-
-  useEffect(()=> {
-    refreshPokemons()
-  }, [num]);
+  /*eslint-disable-next-line*/
+  useEffect(()=> {refreshPokemons()}, [monsToRender]);
+  
   return  { pokemons, refreshPokemons } 
 }

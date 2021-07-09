@@ -1,8 +1,7 @@
 import React from 'react';
 import { Table } from './components/table';
 import { Navbar } from './components/navbar'
-import { useNumberOfCards } from './hooks/number-of-cards'
-import { useModal } from './hooks/settings-hook';
+import { useSettings } from './hooks/settings-hook';
 import { useFetchMons } from './hooks/get-random-mons';
 import { useCardStates } from './hooks/card-state';
 import { useScore } from './hooks/score-hook';
@@ -11,13 +10,17 @@ import {ScoreModal} from './components/score-modal';
 
 function App() {
 
-  const { isVisible, toggleModal} = useModal();
-  const { numberOfCards, incrementCards, decrementCards } = useNumberOfCards();
-  const { pokemons, refreshPokemons } = useFetchMons(numberOfCards);
+  const { isVisible, toggleModal, getGen, monsToRender, numberOfCards, incrementCards, decrementCards, generation} = useSettings();
+  const { pokemons, refreshPokemons } = useFetchMons(monsToRender);
   const { userMoves, addToMoves, resetMoves, getHighScore } = useScore(numberOfCards);
   const { storeScore } = useScore(numberOfCards);
-  const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves, userMoves, numberOfCards, storeScore});
+  const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves, userMoves, storeScore});
 
+  const clearAll = () => {
+    refreshPokemons();
+    resetMoves();
+    clearCards();
+  }
 
   return (
     <React.Fragment>
@@ -41,14 +44,15 @@ function App() {
       decrementCards={decrementCards}
       isVisible={isVisible} 
       toggleModal={toggleModal}
+      getGen={getGen}
+      generation={generation}
+      clearAll={clearAll}
     />
     <ScoreModal 
       toggle={toggleScoreModal}
       isVisible={scoreVisible}
       score={userMoves}
-      clearCards={clearCards}
-      resetMoves={resetMoves}
-      refreshPokemons={refreshPokemons}
+      clearAll={clearAll}
       getHighScore={getHighScore}
     />
     </React.Fragment>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { ScoreModalProps } from '../interfaces';
 
-export  const ScoreModal = ({toggle, isVisible, score, refreshPokemons, clearCards, resetMoves, getHighScore}: ScoreModalProps) => {
+export  const ScoreModal = ({toggle, isVisible, score, getHighScore, clearAll}: ScoreModalProps) => {
 
   return isVisible
   ? ReactDOM.createPortal(
@@ -19,9 +19,7 @@ export  const ScoreModal = ({toggle, isVisible, score, refreshPokemons, clearCar
             <button 
               onClick={()=> {
                 toggle();
-                refreshPokemons();
-                clearCards();
-                resetMoves();
+                clearAll();
               }
             }>OK</button>
         </div>
