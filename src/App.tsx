@@ -10,13 +10,14 @@ import {ScoreModal} from './components/score-modal';
 
 function App() {
 
-  const { isVisible, toggleModal, getGen, monsToRender, numberOfCards, incrementCards, decrementCards, generation} = useSettings();
+  const { isVisible, toggleModal, getGen, getIds, monsToRender, numberOfCards, incrementCards, decrementCards, generation} = useSettings();
   const { pokemons, refreshPokemons } = useFetchMons(monsToRender);
   const { userMoves, addToMoves, resetMoves, getHighScore } = useScore(numberOfCards);
   const { storeScore } = useScore(numberOfCards);
   const { flippedCards, matchedCards, handleClick, clearCards, toggleScoreModal, scoreVisible } = useCardStates({pokemons, addToMoves, resetMoves, userMoves, storeScore});
 
   const clearAll = () => {
+    getIds();
     refreshPokemons();
     resetMoves();
     clearCards();
@@ -35,8 +36,7 @@ function App() {
     <Navbar 
       toggleModal={toggleModal}
       userMoves={userMoves}
-      refreshPokemons={refreshPokemons}
-      clearCards={clearCards}
+      clearAll={clearAll}
     />
     <SettingsModal 
       numberOfCards={numberOfCards}

@@ -6,8 +6,7 @@ export interface Pokemon {
 
 export interface NavbarProps {
   toggleModal: () => void;
-  refreshPokemons:() => void;
-  clearCards:()=> void;
+  clearAll:()=> void;
   userMoves: number;
 }
 

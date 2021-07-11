@@ -12,19 +12,17 @@ export const useSettings = () => {
   const [numberOfCards, setNumberOfCards] = useState<number>(12);
   const [generation, setGeneration] = useState<string>("1,151");
 
-  /* eslint-disable-next-line */
-  useEffect(()=> {getIds(generation)}, [numberOfCards, generation]);
-
+  
   const toggleModal = () => {
     setIsVisible(!isVisible);
   }
-
+  
   const getGen = (str:string) => {
     setGeneration(str)
   }
-
-  const getIds = (str: string) => {
-    let [a, b]: any = str.split(",");
+  
+  const getIds = () => {
+    let [a, b]: any = generation.split(",");
     a = parseInt(a);
     b = parseInt(b);
     const arr: number[] = new Array(b - a + 1);
@@ -35,10 +33,12 @@ export const useSettings = () => {
     const selectedMons = arr.slice(0, numberOfCards/2);
     setMonsToRender(()=>(selectedMons));
   } 
-
-
+  
+  //eslint-disable-next-line
+  useEffect(()=> {getIds()}, [numberOfCards, generation]);
+  
   //increment & decrement number of cards
-
+  
   const incrementCards = () => {
     if (numberOfCards < 28) {
       setNumberOfCards((state)=>(state+4));
@@ -51,7 +51,7 @@ export const useSettings = () => {
     }
   }
   
-
+  
   return {
     numberOfCards,
     incrementCards,
