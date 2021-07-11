@@ -195,6 +195,7 @@ nav .reset span {
 .container .number-of-cards span {
   font-size: 1.25rem;
   font-weight: 700;
+  cursor: pointer;
 } 
 .container .number-of-cards .number-of-mons{
   margin: 0 1em;
